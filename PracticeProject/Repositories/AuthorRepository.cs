@@ -19,11 +19,11 @@ namespace PracticeProject.Repositories
                 },
                 new Author
                 {
-                    Id = 1, FullName = "Sami",
+                    Id = 2, FullName = "Sami",
                 },
                 new Author
                 {
-                    Id = 1, FullName = "Khalid",
+                    Id = 3, FullName = "Khalid",
                 }
             };
         }

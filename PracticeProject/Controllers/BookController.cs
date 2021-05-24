@@ -30,7 +30,8 @@ namespace PracticeProject.Controllers
         // GET: Book/Details/5
         public IActionResult Details(int id)
         {
-            return View();
+            var book = bookRepository.Find(id);
+            return View(book);
         }
 
         // GET: Book/Create
