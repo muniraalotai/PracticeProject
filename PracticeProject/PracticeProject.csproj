@@ -13,13 +13,19 @@
       </PackageReference>
       <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.0-preview.3.21201.2" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.0-preview.3.21201.2" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.6">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
       <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.0-preview.3.21209.2" />
       <PackageReference Include="SQLite" Version="3.13.0" />
       <PackageReference Include="System.Data.SQLite" Version="1.0.113.7" />
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Controllers" />
       <Folder Include="Pages\Items" />
+      <Folder Include="Views" />
     </ItemGroup>
 
 </Project>

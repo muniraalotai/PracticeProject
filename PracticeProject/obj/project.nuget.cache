@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "TM5f2+mZ9lr9muVrAEKd0rnRPT9u9tzE9Pw4kdgozQEMeqcLn7HD/wbZjaVHQrpvpeI/VF25EOblOmqGDzH/8Q==",
+  "dgSpecHash": "5k8hFHI5UaEmAHgMnDmgBduu5xCKJsP+emvZB5vQa/rT0vXNJFv+Y15T4jGlgnvoObd8g0quBDrTW+ymdYXAIg==",
   "success": true,
   "projectFilePath": "C:\\Users\\yasse\\RiderProjects\\PracticeProject\\PracticeProject\\PracticeProject.csproj",
   "expectedPackageFiles": [
@@ -29,6 +29,7 @@
     "C:\\Users\\yasse\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite\\6.0.0-preview.3.21201.2\\microsoft.entityframeworkcore.sqlite.6.0.0-preview.3.21201.2.nupkg.sha512",
     "C:\\Users\\yasse\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite.core\\6.0.0-preview.3.21201.2\\microsoft.entityframeworkcore.sqlite.core.6.0.0-preview.3.21201.2.nupkg.sha512",
     "C:\\Users\\yasse\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\6.0.0-preview.3.21201.2\\microsoft.entityframeworkcore.sqlserver.6.0.0-preview.3.21201.2.nupkg.sha512",
+    "C:\\Users\\yasse\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\5.0.6\\microsoft.entityframeworkcore.tools.5.0.6.nupkg.sha512",
     "C:\\Users\\yasse\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\6.0.0-preview.3.21201.4\\microsoft.extensions.caching.abstractions.6.0.0-preview.3.21201.4.nupkg.sha512",
     "C:\\Users\\yasse\\.nuget\\packages\\microsoft.extensions.caching.memory\\6.0.0-preview.3.21201.4\\microsoft.extensions.caching.memory.6.0.0-preview.3.21201.4.nupkg.sha512",
     "C:\\Users\\yasse\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0-preview.3.21201.4\\microsoft.extensions.configuration.abstractions.6.0.0-preview.3.21201.4.nupkg.sha512",

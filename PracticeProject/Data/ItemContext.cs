@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using PracticeProject.Models;
 
 namespace PracticeProject.Data
 {
@@ -9,5 +10,9 @@ namespace PracticeProject.Data
         }
 
         public DbSet<Models.Item> Items { get; set; }
+
+        public DbSet<PracticeProject.Models.Author> Author { get; set; }
+
+        public DbSet<PracticeProject.Models.Book> Book { get; set; }
     }
 }
