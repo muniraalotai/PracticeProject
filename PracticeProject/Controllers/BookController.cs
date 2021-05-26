@@ -45,13 +45,17 @@ namespace PracticeProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Id,Title,Description")] Book book)
+        public IActionResult Create(Book book)
         {
-            if (ModelState.IsValid)
+            try
             {
+                bookRepository.Add(book);
                 return RedirectToAction(nameof(Index));
             }
-            return View(book);
+            catch
+            {
+                return View(book);   
+            }
         }
 
         // GET: Book/Edit/5

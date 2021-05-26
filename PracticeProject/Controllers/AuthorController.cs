@@ -36,13 +36,17 @@ namespace PracticeProject.Controllers
         // POST: Author/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Id,FullName")] Author author)
+        public IActionResult Create(Author author)
         {
-            if (ModelState.IsValid)
+            try
             {
+                authorRepository.Add(author);
                 return RedirectToAction(nameof(Index));
             }
-            return View(author);
+            catch
+            {
+                return View(author);   
+            }
         }
 
         // GET: Author/Edit/5

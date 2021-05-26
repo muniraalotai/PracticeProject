@@ -207,3 +207,7 @@ C:\Users\yasse\RiderProjects\PracticeProject\PracticeProject\obj\Debug\net5.0\Ra
 C:\Users\yasse\RiderProjects\PracticeProject\PracticeProject\obj\Debug\net5.0\Razor\Views\Book\Details.cshtml.g.cs
 C:\Users\yasse\RiderProjects\PracticeProject\PracticeProject\obj\Debug\net5.0\Razor\Views\Book\Edit.cshtml.g.cs
 C:\Users\yasse\RiderProjects\PracticeProject\PracticeProject\obj\Debug\net5.0\Razor\Views\Book\Index.cshtml.g.cs
+C:\Users\yasse\RiderProjects\PracticeProject\PracticeProject\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
+C:\Users\yasse\RiderProjects\PracticeProject\PracticeProject\bin\Debug\net5.0\libman.json
+C:\Users\yasse\RiderProjects\PracticeProject\PracticeProject\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\yasse\RiderProjects\PracticeProject\PracticeProject\obj\Debug\net5.0\Razor\Views\_ViewStart.cshtml.g.cs
