@@ -61,7 +61,8 @@ namespace PracticeProject.Controllers
         // GET: Book/Edit/5
         public IActionResult Edit(int id)
         {
-            return View();
+            var book = bookRepository.Find(id);
+            return View(book);
         }
 
         // POST: Book/Edit/5
@@ -69,10 +70,11 @@ namespace PracticeProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("Id,Title,Description")] Book book)
+        public IActionResult Edit(int id, Book book)
         {
             try
             {
+                bookRepository.Update(id, book);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -84,16 +86,18 @@ namespace PracticeProject.Controllers
         // GET: Book/Delete/5
         public IActionResult Delete(int id)
         {
-            return View();
+            var book = bookRepository.Find(id);
+            return View(book);
         }
 
         // POST: Book/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(int id, Book book)
         {
             try
             {
+                bookRepository.Delete(id);
                 return RedirectToAction(nameof(Index));
             }
             catch

@@ -52,7 +52,8 @@ namespace PracticeProject.Controllers
         // GET: Author/Edit/5
         public IActionResult Edit(int id)
         {
-            return View();
+            var author = authorRepository.Find(id);
+            return View(author);
         }
 
         // POST: Author/Edit/5
@@ -60,10 +61,11 @@ namespace PracticeProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("Id,FullName")] Author author)
+        public IActionResult Edit(int id, Author author)
         {
             try
             {
+                authorRepository.Update(id, author);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -75,16 +77,18 @@ namespace PracticeProject.Controllers
         // GET: Author/Delete/5
         public IActionResult Delete(int id)
         {
-            return View();
+            var author = authorRepository.Find(id);
+            return View(author);
         }
 
         // POST: Author/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(int id, Author author)
         {
             try
             {
+                authorRepository.Delete(id);
                 return RedirectToAction(nameof(Index));
             }
             catch
