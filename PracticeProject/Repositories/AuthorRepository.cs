@@ -41,6 +41,7 @@ namespace PracticeProject.Repositories
 
         public void Add(Author entity)
         {
+            entity.Id = authors.Max(b => b.Id) + 1;
             authors.Add(entity);
         }
 

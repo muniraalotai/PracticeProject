@@ -44,7 +44,8 @@ namespace PracticeProject.Repositories
 
         public void Add(Book entity)
         {
-          books.Add(entity);
+            entity.Id = books.Max(b => b.Id) + 1;
+            books.Add(entity);
         }
 
         public void Update(int Id, Book entity)

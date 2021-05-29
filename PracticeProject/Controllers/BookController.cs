@@ -35,11 +35,7 @@ namespace PracticeProject.Controllers
         // GET: Book/Create
         public IActionResult Create()
         {
-            var model = new BookAuthorViewModel
-            {
-                Authors = FillSelectList()
-            };
-            return View(model);
+            return View(GetAllAuthorsModel());
         }
 
         // POST: Book/Create
@@ -49,32 +45,30 @@ namespace PracticeProject.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(BookAuthorViewModel bookModel)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (bookModel.AuthorId == -1)
-                {
-                    ViewBag.Message = "Please select an author from the list";
-                    var model = new BookAuthorViewModel
+                 try {
+                    if (bookModel.AuthorId == -1) {
+                        ViewBag.Message = "Please select an author from the list";
+                        return View(GetAllAuthorsModel());
+                    }
+                    var author = authorRepository.Find(bookModel.AuthorId);
+                    Book book = new Book
                     {
-                        Authors = FillSelectList()
+                        Id = bookModel.BookId,
+                        Title = bookModel.Title,
+                        Description = bookModel.Description,
+                        Author = author
                     };
-                    return View(model);
-                }
-                var author = authorRepository.Find(bookModel.AuthorId);
-                Book book = new Book
-                {
-                    Id = bookModel.BookId,
-                    Title = bookModel.Title,
-                    Description = bookModel.Description,
-                    Author = author
-                };
-                bookRepository.Add(book);
-                return RedirectToAction(nameof(Index));
+                    bookRepository.Add(book);
+                    return RedirectToAction(nameof(Index));
+                 }catch
+                 {
+                    return View();   
+                 }
             }
-            catch
-            {
-                return View();   
-            }
+            ModelState.AddModelError("", "You have to fill all required fields!");
+            return View(GetAllAuthorsModel());
         }
 
         // GET: Book/Edit/5
@@ -128,7 +122,7 @@ namespace PracticeProject.Controllers
         // POST: Book/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(int id, Book book)
+        public IActionResult DeleteConfirmed(int id)
         {
             try
             {
@@ -148,5 +142,13 @@ namespace PracticeProject.Controllers
             return authors;
         }
         
+        BookAuthorViewModel GetAllAuthorsModel()
+        {
+            var model = new BookAuthorViewModel
+            {
+                Authors = FillSelectList()
+            };
+            return model;
+        }
     }
 }

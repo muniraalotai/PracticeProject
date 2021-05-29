@@ -211,3 +211,4 @@ C:\Users\yasse\RiderProjects\PracticeProject\PracticeProject\obj\Debug\net5.0\Ra
 C:\Users\yasse\RiderProjects\PracticeProject\PracticeProject\bin\Debug\net5.0\libman.json
 C:\Users\yasse\RiderProjects\PracticeProject\PracticeProject\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\yasse\RiderProjects\PracticeProject\PracticeProject\obj\Debug\net5.0\Razor\Views\_ViewStart.cshtml.g.cs
+C:\Users\yasse\RiderProjects\PracticeProject\PracticeProject\obj\Debug\net5.0\Razor\Views\Shared\_Validation.cshtml.g.cs

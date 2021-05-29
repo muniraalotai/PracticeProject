@@ -38,15 +38,20 @@ namespace PracticeProject.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Author author)
         {
-            try
+            if (ModelState.IsValid)
             {
-                authorRepository.Add(author);
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    authorRepository.Add(author);
+                    return RedirectToAction(nameof(Index));
+                }
+                catch
+                {
+                    return View(author);   
+                } 
             }
-            catch
-            {
-                return View(author);   
-            }
+            ModelState.AddModelError("", "You have to fill all required fields!");
+            return View();
         }
 
         // GET: Author/Edit/5
