@@ -15,15 +15,18 @@ namespace PracticeProject.Repositories
             {
                 new Book
                 {
-                    Id=1, Title = "Team leadership", Description = "Team leadership"
+                    Id=1, Title = "Team leadership", Description = "Team leadership", 
+                    Author = new Author {Id = 2}
                 },
                 new Book
                 {
-                    Id=2, Title = "Project management", Description = "Project management"
+                    Id=2, Title = "Project management", Description = "Project management", 
+                    Author = new Author {Id = 2}
                 }, 
                 new Book
                 {
-                    Id=3, Title = "Software engineering", Description = "Software engineering"
+                    Id=3, Title = "Software engineering", Description = "Software engineering", 
+                    Author = new Author {Id = 2}
                 },
             };
         }

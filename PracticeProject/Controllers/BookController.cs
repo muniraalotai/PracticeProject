@@ -1,23 +1,21 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using PracticeProject.Data;
 using PracticeProject.Models;
 using PracticeProject.Repositories;
+using PracticeProject.ViewModels;
 
 namespace PracticeProject.Controllers
 {
     public class BookController : Controller
     {
         private readonly IBookStoreRepository<Book> bookRepository;
+        private readonly IBookStoreRepository<Author> authorRepository;
 
-        public BookController(IBookStoreRepository<Book> bookStoreRepository)
+        public BookController(IBookStoreRepository<Book> bookStoreRepository, IBookStoreRepository<Author> authorStoreRepository)
         {
             this.bookRepository = bookStoreRepository;
+            this.authorRepository = authorStoreRepository;
         }
 
         // GET: Book
@@ -37,7 +35,11 @@ namespace PracticeProject.Controllers
         // GET: Book/Create
         public IActionResult Create()
         {
-            return View();
+            var model = new BookAuthorViewModel
+            {
+                Authors = FillSelectList()
+            };
+            return View(model);
         }
 
         // POST: Book/Create
@@ -45,16 +47,33 @@ namespace PracticeProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Book book)
+        public IActionResult Create(BookAuthorViewModel bookModel)
         {
             try
             {
+                if (bookModel.AuthorId == -1)
+                {
+                    ViewBag.Message = "Please select an author from the list";
+                    var model = new BookAuthorViewModel
+                    {
+                        Authors = FillSelectList()
+                    };
+                    return View(model);
+                }
+                var author = authorRepository.Find(bookModel.AuthorId);
+                Book book = new Book
+                {
+                    Id = bookModel.BookId,
+                    Title = bookModel.Title,
+                    Description = bookModel.Description,
+                    Author = author
+                };
                 bookRepository.Add(book);
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View(book);   
+                return View();   
             }
         }
 
@@ -62,7 +81,16 @@ namespace PracticeProject.Controllers
         public IActionResult Edit(int id)
         {
             var book = bookRepository.Find(id);
-            return View(book);
+            var authorId = book.Author == null ? book.Author.Id = 0 : book.Author.Id;
+            var model = new BookAuthorViewModel
+            {
+                BookId = book.Id,
+                Title = book.Title,
+                Description = book.Description,
+                AuthorId = authorId,
+                Authors = authorRepository.List().ToList()
+            };
+            return View(model);
         }
 
         // POST: Book/Edit/5
@@ -70,16 +98,23 @@ namespace PracticeProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, Book book)
+        public IActionResult Edit(BookAuthorViewModel bookModel)
         {
             try
             {
-                bookRepository.Update(id, book);
+                var author = authorRepository.Find(bookModel.AuthorId);
+                Book book = new Book
+                {
+                    Title = bookModel.Title,
+                    Description = bookModel.Description,
+                    Author = author
+                };
+                bookRepository.Update(bookModel.BookId, book);
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View(book); 
+                return View(); 
             }
         }
 
@@ -105,6 +140,13 @@ namespace PracticeProject.Controllers
                 return View(); 
             }
         }
-
+        
+        List<Author> FillSelectList()
+        {
+            var authors = authorRepository.List().ToList();
+            authors.Insert(0, new Author { Id = -1, FullName = "Please select an author" });
+            return authors;
+        }
+        
     }
 }
