@@ -15,18 +15,24 @@ namespace PracticeProject.Repositories
             {
                 new Book
                 {
-                    Id=1, Title = "Team leadership", Description = "Team leadership", 
-                    Author = new Author {Id = 2}
+                    Id=1, Title = "Team leadership",
+                    Description = "Team leadership", 
+                    ImageUrl = "copy.jpg",
+                    Author = new Author {Id = 1}
                 },
                 new Book
                 {
-                    Id=2, Title = "Project management", Description = "Project management", 
+                    Id=2, Title = "Project management",
+                    Description = "Project management", 
+                    ImageUrl = "palm.jpg",
                     Author = new Author {Id = 2}
                 }, 
                 new Book
                 {
-                    Id=3, Title = "Software engineering", Description = "Software engineering", 
-                    Author = new Author {Id = 2}
+                    Id=3, Title = "Software engineering",
+                    Description = "Software engineering", 
+                    ImageUrl = "Riyadh.jpg",
+                    Author = new Author {Id = 3}
                 },
             };
         }
@@ -53,7 +59,9 @@ namespace PracticeProject.Repositories
             var book = Find(Id);
             book.Title = entity.Title;
             book.Description = entity.Description;
+            book.ImageUrl = entity.ImageUrl;
             book.Author = entity.Author;
+           
         }
 
         public void Delete(int Id)

@@ -1,5 +1,8 @@
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PracticeProject.Models;
 using PracticeProject.Repositories;
@@ -11,12 +14,15 @@ namespace PracticeProject.Controllers
     {
         private readonly IBookStoreRepository<Book> bookRepository;
         private readonly IBookStoreRepository<Author> authorRepository;
+        private IHostingEnvironment _hostEnvironment; 
 
-        public BookController(IBookStoreRepository<Book> bookStoreRepository, IBookStoreRepository<Author> authorStoreRepository)
+        public BookController(IBookStoreRepository<Book> bookStoreRepository, IBookStoreRepository<Author> authorStoreRepository, IHostingEnvironment hostEnvironment)
         {
             this.bookRepository = bookStoreRepository;
             this.authorRepository = authorStoreRepository;
+            this._hostEnvironment = hostEnvironment; 
         }
+        
 
         // GET: Book
         public IActionResult Index()
@@ -47,21 +53,25 @@ namespace PracticeProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                 try {
-                    if (bookModel.AuthorId == -1) {
+                 try
+                 {
+                     string fileName = UploadFile(bookModel.File) ?? string.Empty;
+                     
+                     if (bookModel.AuthorId == -1) {
                         ViewBag.Message = "Please select an author from the list";
                         return View(GetAllAuthorsModel());
-                    }
-                    var author = authorRepository.Find(bookModel.AuthorId);
-                    Book book = new Book
-                    {
-                        Id = bookModel.BookId,
-                        Title = bookModel.Title,
-                        Description = bookModel.Description,
-                        Author = author
-                    };
-                    bookRepository.Add(book);
-                    return RedirectToAction(nameof(Index));
+                     }
+                     var author = authorRepository.Find(bookModel.AuthorId);
+                     Book book = new Book
+                     {
+                         Id = bookModel.BookId,
+                         Title = bookModel.Title,
+                         Description = bookModel.Description,
+                         ImageUrl = fileName,
+                         Author = author
+                     };
+                     bookRepository.Add(book);
+                     return RedirectToAction(nameof(Index));
                  }catch
                  {
                     return View();   
@@ -82,6 +92,7 @@ namespace PracticeProject.Controllers
                 Title = book.Title,
                 Description = book.Description,
                 AuthorId = authorId,
+                ImageUrl = book.ImageUrl,
                 Authors = authorRepository.List().ToList()
             };
             return View(model);
@@ -96,19 +107,21 @@ namespace PracticeProject.Controllers
         {
             try
             {
+                string fileName = UploadFile(bookModel.File, bookModel.ImageUrl);
                 var author = authorRepository.Find(bookModel.AuthorId);
                 Book book = new Book
                 {
                     Title = bookModel.Title,
                     Description = bookModel.Description,
-                    Author = author
+                    Author = author,
+                    ImageUrl = fileName
                 };
                 bookRepository.Update(bookModel.BookId, book);
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View(); 
+                return View(bookModel); 
             }
         }
 
@@ -149,6 +162,33 @@ namespace PracticeProject.Controllers
                 Authors = FillSelectList()
             };
             return model;
+        }
+        string UploadFile(IFormFile file)
+        {
+            if (file != null)
+            {
+                string uploads = Path.Combine(_hostEnvironment.WebRootPath, "photos");
+                string fullPath = Path.Combine(uploads, file.FileName);
+                file.CopyTo(new FileStream(fullPath, FileMode.Create));
+                return file.FileName;
+            }
+
+            return null;
+        }
+
+        string UploadFile(IFormFile file, string imageUrl)
+        {
+            if (file != null)
+            {
+                string uploads = Path.Combine(_hostEnvironment.WebRootPath, "photos");
+                string newPath = Path.Combine(uploads, file.FileName);
+                string oldPath = Path.Combine(uploads, imageUrl);
+              //  System.IO.File.Delete(oldPath);
+                file.CopyTo(new FileStream(newPath, FileMode.Create));
+                return file.FileName;
+            }
+
+            return imageUrl;
         }
     }
 }

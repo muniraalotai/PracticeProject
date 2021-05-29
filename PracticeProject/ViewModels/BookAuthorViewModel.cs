@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
 using PracticeProject.Models;
 
 namespace PracticeProject.ViewModels
@@ -17,6 +18,10 @@ namespace PracticeProject.ViewModels
         [Required]
         [StringLength(120,MinimumLength = 5)]
         public string  Description { get; set; }
+
+        public IFormFile File { get; set; }
+        
+        public string ImageUrl { get; set; }
 
         public int AuthorId { get; set; }
 
