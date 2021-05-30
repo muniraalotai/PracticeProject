@@ -30,7 +30,7 @@
       <Folder Include="Areas\import\Models" />
       <Folder Include="Areas\import\Views" />
       <Folder Include="Controllers" />
-      <Folder Include="Pages\Items" />
+      <Folder Include="Migrations" />
     </ItemGroup>
 
 </Project>

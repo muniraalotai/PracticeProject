@@ -69,5 +69,10 @@ namespace PracticeProject.Repositories
             var book = Find(Id);
             books.Remove(book);
         }
+
+        public List<Book> Search(string word)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

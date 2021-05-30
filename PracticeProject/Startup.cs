@@ -1,10 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,11 +24,12 @@ namespace PracticeProject
         {
             services.AddMvc(options => options.EnableEndpointRouting = false);
             services.AddControllersWithViews();
-            services.AddSingleton<IBookStoreRepository<Author>, AuthorRepository>();
-            services.AddSingleton<IBookStoreRepository<Book>, BookRepository>();
-            /*services.AddDbContext<ItemContext>(optionsAction: options =>
-                options.UseSqlite(Configuration.GetConnectionString("ItemContext")));
-            services.AddRazorPages();*/
+            services.AddScoped<IBookStoreRepository<Author>, AuthorDbRepository>();
+            services.AddScoped<IBookStoreRepository<Book>, BookDbRepository>();
+            services.AddDbContext<BookStoreDbContext>(optionsAction: options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("SqlCon"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,8 +39,10 @@ namespace PracticeProject
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseMvcWithDefaultRoute();
             app.UseStaticFiles();
+            app.UseMvc(route=> {
+                route.MapRoute("default", "{controller=Book}/{action=Index}/{id?}");
+            });
         }
     }
 }

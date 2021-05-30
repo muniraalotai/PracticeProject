@@ -13,13 +13,19 @@
     <thead>
     <tr>
         <th>
-           @Html.DisplayNameFor(model => model.Id)
+           Book ID
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Title)
+            Title
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            Description
+        </th>
+        <th>
+            Author Name
+        </th>
+        <th>
+            Image
         </th>
         <th></th>
     </tr>
@@ -35,6 +41,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Author.FullName)
         </td>
         <td>
             @if (item.ImageUrl != null)

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using PracticeProject.Models;
 
 namespace PracticeProject.Repositories
 {
@@ -13,6 +14,8 @@ namespace PracticeProject.Repositories
         void Update(int Id, TEntity entity);
 
         void Delete(int Id);
+
+        List<TEntity> Search(string word);
 
     }
 }

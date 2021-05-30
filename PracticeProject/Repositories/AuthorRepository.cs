@@ -56,5 +56,10 @@ namespace PracticeProject.Repositories
             var author = Find(Id);
             authors.Remove(author);
         }
+
+        public List<Author> Search(string word)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

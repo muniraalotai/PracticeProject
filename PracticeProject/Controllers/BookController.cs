@@ -111,6 +111,7 @@ namespace PracticeProject.Controllers
                 var author = authorRepository.Find(bookModel.AuthorId);
                 Book book = new Book
                 {
+                    Id = bookModel.BookId,
                     Title = bookModel.Title,
                     Description = bookModel.Description,
                     Author = author,
@@ -189,6 +190,12 @@ namespace PracticeProject.Controllers
             }
 
             return imageUrl;
+        }
+
+        public ActionResult Search(string word)
+        {
+            var result = bookRepository.Search(word);
+            return View("Index", result);
         }
     }
 }
