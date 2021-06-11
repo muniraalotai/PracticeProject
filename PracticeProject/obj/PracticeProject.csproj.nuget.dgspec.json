@@ -74,6 +74,26 @@
               "target": "Package",
               "version": "[3.13.0, )"
             },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[4.1.1-dev-00229, )"
+            },
+            "Serilog.Enrichers.Environment": {
+              "target": "Package",
+              "version": "[2.2.0-dev-00784, )"
+            },
+            "Serilog.Enrichers.Process": {
+              "target": "Package",
+              "version": "[2.0.2-dev-00741, )"
+            },
+            "Serilog.Enrichers.Thread": {
+              "target": "Package",
+              "version": "[3.2.0-dev-00752, )"
+            },
+            "Serilog.Settings.Configuration": {
+              "target": "Package",
+              "version": "[3.2.0-dev-00272, )"
+            },
             "System.Data.SQLite": {
               "target": "Package",
               "version": "[1.0.113.7, )"

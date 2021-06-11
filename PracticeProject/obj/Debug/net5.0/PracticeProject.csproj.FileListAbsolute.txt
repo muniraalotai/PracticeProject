@@ -207,3 +207,15 @@ C:\Users\yasse\RiderProjects\PracticeProject\PracticeProject\bin\Debug\net5.0\li
 C:\Users\yasse\RiderProjects\PracticeProject\PracticeProject\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\yasse\RiderProjects\PracticeProject\PracticeProject\obj\Debug\net5.0\Razor\Views\_ViewStart.cshtml.g.cs
 C:\Users\yasse\RiderProjects\PracticeProject\PracticeProject\obj\Debug\net5.0\Razor\Views\Shared\_Validation.cshtml.g.cs
+C:\Users\yasse\RiderProjects\PracticeProject\PracticeProject\bin\Debug\net5.0\Serilog.dll
+C:\Users\yasse\RiderProjects\PracticeProject\PracticeProject\bin\Debug\net5.0\Serilog.AspNetCore.dll
+C:\Users\yasse\RiderProjects\PracticeProject\PracticeProject\bin\Debug\net5.0\Serilog.Enrichers.Environment.dll
+C:\Users\yasse\RiderProjects\PracticeProject\PracticeProject\bin\Debug\net5.0\Serilog.Enrichers.Process.dll
+C:\Users\yasse\RiderProjects\PracticeProject\PracticeProject\bin\Debug\net5.0\Serilog.Enrichers.Thread.dll
+C:\Users\yasse\RiderProjects\PracticeProject\PracticeProject\bin\Debug\net5.0\Serilog.Extensions.Hosting.dll
+C:\Users\yasse\RiderProjects\PracticeProject\PracticeProject\bin\Debug\net5.0\Serilog.Extensions.Logging.dll
+C:\Users\yasse\RiderProjects\PracticeProject\PracticeProject\bin\Debug\net5.0\Serilog.Formatting.Compact.dll
+C:\Users\yasse\RiderProjects\PracticeProject\PracticeProject\bin\Debug\net5.0\Serilog.Settings.Configuration.dll
+C:\Users\yasse\RiderProjects\PracticeProject\PracticeProject\bin\Debug\net5.0\Serilog.Sinks.Console.dll
+C:\Users\yasse\RiderProjects\PracticeProject\PracticeProject\bin\Debug\net5.0\Serilog.Sinks.Debug.dll
+C:\Users\yasse\RiderProjects\PracticeProject\PracticeProject\bin\Debug\net5.0\Serilog.Sinks.File.dll
