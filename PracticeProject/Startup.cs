@@ -40,6 +40,7 @@ namespace PracticeProject
                 app.UseDeveloperExceptionPage();
             }
             app.UseStaticFiles();
+            app.UseRouting();
             app.UseMvc(route=> {
                 route.MapRoute("default", "{controller=Book}/{action=Index}/{id?}");
             });
